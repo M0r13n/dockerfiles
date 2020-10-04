@@ -1,8 +1,7 @@
 # We use Ubuntu 20.04
 FROM ubuntu:focal
 
-LABEL MAINTAINER="leonmorten.richter@elac-wartsila.de"
-LABEL ORG="elac"
+LABEL MAINTAINER="me@leonmortenrichter.de"
 LABEL DESCRIPTION="C++ Build env with Boost libs available"
 
 WORKDIR /usr/include/

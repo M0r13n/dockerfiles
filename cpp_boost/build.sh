@@ -2,7 +2,7 @@
 
 if [ $# -eq 0 ]
   then
-    printf "Usage: build-docker.sh <BOOST_VERSION>\nExample: build-docker.sh 1.75.0"
+    printf "Usage: ./build.sh <BOOST_VERSION>\nExample: build-docker.sh 1.75.0"
     exit 1
 fi
 
