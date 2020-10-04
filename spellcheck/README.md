@@ -2,7 +2,7 @@
 
 Minimal docker image with shellcheck binary installed.
 
-![Successful linting of multiple files](../doc/spellcheck/to/success.png "Example Screen")
+![Successful linting of multiple files](../doc/spellcheck/success.png "Example Screen")
 
 ## Usage
 
