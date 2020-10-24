@@ -13,7 +13,7 @@ RUN apt-get update \
 
 # Set Version to stable. Could also be "latest" or "v0.4.7"
 ARG SCVERSION
-ENV SCVERSION=${SCVERSION}
+ENV SCVERSION=${SCVERSION:-stable}
 
 # Download file from server and extract it's contents
 RUN wget --max-redirect 3 "https://github.com/koalaman/shellcheck/releases/download/${SCVERSION?}/shellcheck-${SCVERSION?}.linux.x86_64.tar.xz" \

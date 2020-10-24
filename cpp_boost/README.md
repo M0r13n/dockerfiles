@@ -14,7 +14,7 @@ Boost is installed from source, because the latest PPA for boost is most likely 
 In order to build the image with Boost version 1.74.0
 
 ```sh
-.\build-docker.sh 1.74.0
+docker build . -t elac/boost:1.74.0 --build-arg BOOST_VERSION=1.74.0 --build-arg BOOST_VERSION_ESCAPED=1_74_0
 ```
 
 ### Run
@@ -22,7 +22,7 @@ In order to build the image with Boost version 1.74.0
 To run  a built image with Boost version 1.74.0
 
 ```sh
-./run-docker.sh 1.74.0
+docker run -ti elac/boost:1.74.0 /bin/bash
 ```
 
 ### Launch

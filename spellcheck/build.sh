@@ -15,4 +15,4 @@ VERSION="$SCVERSION"
 docker rmi ${ORG?}/shellcheck:"${VERSION?}"
 
 # Build image
-docker build . -t ${ORG?}/shellcheck:"${VERSION?}" --build-arg SCVERSION="${VERSION?}"
+docker build --rm . -t ${ORG?}/shellcheck:"${VERSION?}" --build-arg SCVERSION="${VERSION?}"
