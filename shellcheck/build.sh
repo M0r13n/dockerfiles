@@ -1,6 +1,18 @@
 #!/bin/bash
 
 ORG="elac"
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+
+build() {
+    org="$1"
+    version="$2"
+
+    # Delete old image
+    docker rmi ${org?}/shellcheck:"${version?}"
+
+    # Build image
+    docker build --rm "$DIR" -t ${org?}/shellcheck:"${version?}" --build-arg SCVERSION="${version?}"
+}
 
 # Version can be specified by first arg. Default is stable
 if [ $# -eq 0 ]; then
@@ -9,10 +21,4 @@ else
     SCVERSION="$1"
 fi
 
-VERSION="$SCVERSION"
-
-# Delete old image
-docker rmi ${ORG?}/shellcheck:"${VERSION?}"
-
-# Build image
-docker build --rm . -t ${ORG?}/shellcheck:"${VERSION?}" --build-arg SCVERSION="${VERSION?}"
+build "${ORG}" "${SCVERSION}"
