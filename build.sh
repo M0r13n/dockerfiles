@@ -3,7 +3,7 @@ set -e
 set -o pipefail
 
 SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
-REPO_URL="${REPO_URL:-leonmortenrichter.jfrog.io/docker-local}"
+export REPO_URL="${REPO_URL:-leonmortenrichter.jfrog.io/docker-local}"
 
 do_push() {
     base="$1"
@@ -66,8 +66,10 @@ if [ ! -d "${SCRIPT_DIR}/$1" ]; then
 fi
 
 # If no version is provided fall back to latest
-if [[ -z "$tag" ]] || [[ "$tag" == "$base" ]]; then
+if [ -z "$2" ]; then
     tag=latest
+else
+    tag="$2"
 fi
 
 # Run build
@@ -77,3 +79,5 @@ do_build "$1" "$2"
 if [ $push = true ]; then
     do_push "$1" "$tag"
 fi
+
+unset REPO_URL

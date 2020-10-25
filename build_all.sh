@@ -2,7 +2,7 @@
 set -e
 set -o pipefail
 
-REPO_URL="${REPO_URL:-leonmortenrichter.jfrog.io/docker-local}"
+export REPO_URL="${REPO_URL:-leonmortenrichter.jfrog.io/docker-local}"
 
 build_and_push() {
     base=$1

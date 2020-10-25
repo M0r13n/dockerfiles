@@ -2,6 +2,7 @@
 
 ORG="elac"
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+base="$(dirname "${BASH_SOURCE[0]}")"
 
 build() {
     org="$1"
@@ -11,7 +12,7 @@ build() {
     docker rmi ${org?}/shellcheck:"${version?}"
 
     # Build image
-    docker build --rm "$DIR" -t ${org?}/shellcheck:"${version?}" --build-arg SCVERSION="${version?}"
+    docker build --rm "$DIR" -t "${REPO_URL?}/${base?}:${version?}" --build-arg SCVERSION="${version?}"
 }
 
 # Version can be specified by first arg. Default is stable
